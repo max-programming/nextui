@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import {
   Container,
@@ -21,12 +21,6 @@ const DynamicHeroComponents = dynamic(() => import('./components'), {
 });
 
 const Hero: React.FC = () => {
-  const router = useRouter();
-
-  const handleGetStartedClick = () => {
-    router.push('docs/guide/getting-started');
-  };
-
   return (
     <Container
       lg={true}
@@ -95,22 +89,25 @@ const Hero: React.FC = () => {
             }}
           >
             <Grid xs={12} sm={3}>
-              <Button
-                auto
-                rounded
-                className="hero__get-started-button"
-                size="lg"
-                onClick={handleGetStartedClick}
-                css={{
-                  maxHeight: '$space$14',
-                  '@xsMax': {
-                    width: '100%',
-                    marginBottom: '$8'
-                  }
-                }}
-              >
-                Get Started
-              </Button>
+              <Link href='/docs/guide/getting-started'>
+                <a>
+                  <Button
+                    auto
+                    rounded
+                    className="hero__get-started-button"
+                    size="lg"
+                    css={{
+                      maxHeight: '$space$14',
+                      '@xsMax': {
+                        width: '100%',
+                        marginBottom: '$8'
+                      }
+                    }}
+                  >
+                    Get Started
+                  </Button>
+                </a>
+              </Link>
             </Grid>
             <Grid xs={12} sm={9}>
               <Snippet
